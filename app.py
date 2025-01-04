@@ -26,9 +26,9 @@ def search():
     term = request.form.get('term', '').strip().lower()  
     result = Father.query.filter_by(term=term).first()  
     if result:  
-        flash(f'Definition: {result.definition}', 'success')  
+        flash(f'Debiin isaa: {result.definition}', 'success')  
     else:  
-        flash('Not found in the database.', 'warning')  
+        flash('Not found in the database.❌', 'warning')  
     return redirect('/')  
 
 @app.route('/add', methods=['POST'])  
@@ -40,7 +40,7 @@ def add_record():
         try:  
             db.session.add(new_entry)  
             db.session.commit()  
-            flash('Record added successfully.', 'success')  
+            flash('Record added successfully.✅', 'success')  
         except:  
             flash('Term already exists.', 'warning')  
         finally:  
@@ -54,7 +54,7 @@ def delete_record(term):
     if entry:  
         db.session.delete(entry)  
         db.session.commit()  
-        flash(f'Record "{term}" deleted successfully.', 'success')  
+        flash(f'Record "{term}" deleted successfully.✔', 'success')  
     return redirect('/')  
 
 if __name__ == '__main__':  

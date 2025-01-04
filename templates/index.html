@@ -3,12 +3,24 @@
 <head>  
     <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1">  
-    <title>Father Dictionary Management</title>  
+    <title>Afaan Oromoo Gara Afaan Oromotti</title>  
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  
 </head>  
+<style>
+    body {  
+        font-family: Arial, sans-serif;  
+        margin: 0;  
+        padding: 0;   
+        background-color: #7A32B2; /* Adjust the background color */  
+        color: white;  
+      }  
+      ul{
+        color: green;
+      }
+</style>
 <body>  
 <div class="container">  
-    <h1 class="mt-4">Father Dictionary Management</h1>  
+    <h1 class="mt-4">Afaan Oromoo Gara Afaan Oromotti</h1>  
 
     {% with messages = get_flashed_messages(with_categories=true) %}  
       {% if messages %}  
@@ -19,23 +31,24 @@
     {% endwith %}  
 
     <form method="POST" action="/search" class="form-inline mt-3">  
-        <input type="text" name="term" placeholder="Enter term" class="form-control mr-2">  
-        <button type="submit" class="btn btn-primary">Search</button>  
+        <input type="text" name="term" placeholder="jecha hikuu barbade" class="form-control mr-2">  
+        <button type="submit" class="btn btn-primary">🔍</button>  
     </form>  
 
     <form method="POST" action="/add" class="form-inline mt-3">  
-        <input type="text" name="new_term" placeholder="New Term" class="form-control mr-2">  
-        <input type="text" name="new_definition" placeholder="Definition" class="form-control mr-2">  
-        <button type="submit" class="btn btn-success">Add Record</button>  
+        <input type="text" name="new_term" placeholder="jecha haraa galmessi" class="form-control mr-2">  
+        <input type="text" name="new_definition" placeholder="Hika isaa baressi" class="form-control mr-2">  
+        <button type="submit" class="btn btn-success">galmesi💚</button>  
     </form>  
 
-    <h3 class="mt-4">All Terms</h3>  
+    <h3 class="mt-4">hikaa Jechoota👁‍🗨</h3>  
+
     <ul class="list-group mt-2">  
         {% for term in terms %}  
             <li class="list-group-item d-flex justify-content-between align-items-center">  
                 {{ term.term }}: {{ term.definition }}  
                 <form method="POST" action="/delete/{{ term.term }}" style="display:inline;">  
-                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>  
+                    <button type="submit" class="btn btn-danger btn-sm">haqi❌</button>  
                 </form>  
             </li>  
         {% endfor %}  
